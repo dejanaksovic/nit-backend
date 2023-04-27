@@ -2,7 +2,7 @@
 
 # VAZNO
 
-Nije koristena nikakva vrsta enkripicije prilikom kreiranja (registrovanja) korisnika. NE STAVLJAJTE SIFRE VASIH SENZITIVNIH NALOGA
+Nije koristena nikakva vrsta enkripicije prilikom kreiranja (registrovanja) korisnika. **NE STAVLJAJTE SIFRE VASIH SENZITIVNIH NALOGA**
 
 ## Ovaj API je napravljen u svrhu vezbanja koriscena rest api-ja.
 
