@@ -15,7 +15,7 @@ const getUsers = (req, res) => {
 
     if(!user) {
         return res.status(404).json({
-            err: "The user with that id doesn't exist"
+            err: "Korisnik sa tim id-em ne postoji"
         })
     }
 
@@ -29,7 +29,7 @@ const addUser = (req, res) => {
 
     if(!name || !email || !password)
         return res.status(400).json({
-            err: "The user must have all of the required fields"
+            err: "Korisnik mora imati sva zadata polja"
         })
 
     try {
@@ -42,7 +42,7 @@ const addUser = (req, res) => {
 
     catch(err) {
         return res.status(500).json({
-            error: err.message
+            err: err.message
         })
     }
 }
@@ -52,7 +52,7 @@ const logIn = (req, res) => {
 
     if(!email | !password) {
         return res.status(400).json({
-            err: "Invalid credentials"
+            err: "Neispravni kredencijali"
         })
     }
 
@@ -60,12 +60,12 @@ const logIn = (req, res) => {
 
     if(!user)
         return res.status(404).json({
-            err: "The user with the given email doesn't exist"
+            err: "Korisnik sa tom imejl adresom ne postoji"
         })
 
     if(user.password !== password) 
         return res.status(401).json({
-            err: "Invalid credentials"
+            err: "Neispravni kredencijali"
         })
 
     res.status(200).json({

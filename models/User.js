@@ -14,10 +14,10 @@ class User {
     constructor(name, email, password) {
 
         if(!name | !email | !password) {
-            throw Error("The user must have all of the requested fields")
+            throw Error("Korisnik mora imati sva polja")
         }
         if(emailExists(email))
-            throw Error("The user with that email already exists")
+            throw Error("Korisnik sa tim mejlom vec postoji")
 
         this.id = (++globalId).toString()
         this.name = name
