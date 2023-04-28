@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 
 const authorize = (req, res, next) => {
+    try {
     if(!req.headers.authorization)
         return res.status(401).json({
             error: "Nema hedera za autorizaciju"
@@ -9,9 +10,7 @@ const authorize = (req, res, next) => {
     if(!req.headers.authorization.startsWith("Bearer")) {
         return res.status(401).json({
             error: "Autorizacija nije tipa 'bearer token'"
-        })
-    }
-
+        }) }
     const token = req.headers.authorization.split(" ")[1]
 
     if(!token) {
@@ -29,7 +28,13 @@ const authorize = (req, res, next) => {
         })
     }
 
-    next()
+    next() }
+
+    catch(err) {
+        res.json({
+            err
+        })
+    }
 }
 
 module.exports = authorize

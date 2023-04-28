@@ -25,6 +25,7 @@ const getUsers = (req, res) => {
 }
 
 const addUser = (req, res) => {
+    try {
     const { name, email, password } = req.body
 
     if(!name || !email || !password)
@@ -44,10 +45,17 @@ const addUser = (req, res) => {
         return res.status(500).json({
             err: err.message
         })
+    }}
+
+    catch(err) {
+        res.status(500).json({
+            err
+        })
     }
 }
 
 const logIn = (req, res) => {
+    try {
     const {email, password} = req.body
 
     if(!email | !password) {
@@ -71,7 +79,12 @@ const logIn = (req, res) => {
     res.status(200).json({
         user,
         token: jwt.sign({ id: user.id }, "12345", {expiresIn: '1h'})
-    })
+    })}
+    catch(err) {
+        res.status(500).json({
+            err
+        })
+    }
 }
 
 module.exports = {
