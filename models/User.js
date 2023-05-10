@@ -19,7 +19,7 @@ class User {
         if(emailExists(email))
             throw Error("Korisnik sa tim mejlom vec postoji")
 
-        this.createdAt = new Date().getDate()
+        this.createdAt = new Date()
         this.id = (++globalId).toString()
         this.name = name
         this.email = email
