@@ -1,4 +1,4 @@
-const { User, users } = require('../models/User')
+let { User, users } = require('../models/User')
 
 const jwt = require('jsonwebtoken')
 
@@ -25,7 +25,7 @@ const getUsers = (req, res) => {
 }
 
 const addUser = (req, res) => {
-    const { name, email, password } = req.body
+    const { name, email, password, residency, desc, imgUrl, ghUrl } = req.body
 
     if(!name || !email || !password)
         return res.status(400).json({
@@ -33,7 +33,7 @@ const addUser = (req, res) => {
         })
 
     try {
-        const currentUser = new User(name, email, password)
+        const currentUser = new User(name, email, password, residency, desc, imgUrl, ghUrl)
         currentUser.save()
         return res.status(201).json({
             user: currentUser,
@@ -74,8 +74,31 @@ const logIn = (req, res) => {
     })
 }
 
+const deleteUser = (req, res) => {
+    const { id } = req.params
+
+    if(!id) 
+        return res.status(400).json({
+            err: "Morate dati id korisnika kojeg zelite da obrisete"
+        })
+    
+    const userToDel = User.getById(id)
+
+    if(!userToDel)
+        return res.status(404).json({
+            err: "Korisnik sa tim id-em nije pronadjen"
+        })
+
+    users = users.filter( e => e.id !== id )
+
+    return res.status(200).json({
+        userToDel
+    })
+}
+
 module.exports = {
     getUsers,
     addUser,
-    logIn
+    logIn,
+    deleteUser
 }

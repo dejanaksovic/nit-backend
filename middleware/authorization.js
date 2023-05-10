@@ -21,6 +21,7 @@ const authorize = (req, res, next) => {
 
     try {
         payload = jwt.verify(token, "12345")
+        req.userId = payload.id
     }
     catch(err) {
         return res.status(401).json({

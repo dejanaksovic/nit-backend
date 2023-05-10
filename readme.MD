@@ -9,7 +9,7 @@ https://nit-backend.onrender.com
 
 ## Ovaj API je napravljen u svrhu vezbanja koriscena rest api-ja.
 
-Jednostavan api koji cuva informacije korisnika (ime, imejl i sifru-> POGLEDAJ VAZNO) i mogu ce je dodavati ili brisati korisnike. Svaki odgovor, prilikom greske salje "err" objekat koji u sebi sadrzi poruku o tome sta nije bilo u redu sa proslim zahtevom
+Jednostavan api koji cuva informacije korisnika (ime, imejl i sifru-> POGLEDAJ VAZNO) i moguce je dodavati ili brisati korisnike. Svaki odgovor, prilikom greske salje "err" objekat koji u sebi sadrzi poruku o tome sta nije bilo u redu sa proslim zahtevom
 
 Dejan Aksovic u saradnji sa Dzenanom Kosutom
 
